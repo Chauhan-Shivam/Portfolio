@@ -8,29 +8,33 @@
 }
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #000; /* Dark background by default */
+  background-color: #000;
   color: #fff;
   line-height: 1.6;
   transition: background 0.3s, color 0.3s;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 body.light-mode {
   background-color: #f7f7f7;
   color: #333;
 }
 a {
-  color: #ffb400; /* Gold accent */
-  text-decoration: none; 
+  color: #ffb400;
+  text-decoration: none;
   transition: color 0.3s;
   position: relative;
 }
 a:hover {
-  color: #ffb400; 
-  text-decoration: none;
+  color: #ffb400;
 }
 h1, h2, h3 {
   font-weight: 700;
-  color: #ffb400; 
+  color: #ffb400;
 }
 p, li {
   color: #ccc;
@@ -47,14 +51,14 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0,0,0,0.9);
   border-bottom: 1px solid #222;
   z-index: 999;
   box-shadow: 0 0 10px rgba(255,180,0,0.3);
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, background 0.3s, box-shadow 0.3s;
 }
 body.light-mode nav {
-  background: rgba(247, 247, 247, 0.9);
+  background: rgba(247,247,247,0.9);
   border-bottom: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
@@ -69,23 +73,30 @@ body.light-mode nav {
 }
 .nav-logo {
   font-size: 1.5rem;
-  color: #ffcc00; /* Name color updated to white (or near white) */
+  color: #ffcc00;
   font-weight: 700;
 }
-.nav-menu ul {
+/* Desktop horizontal nav */
+.nav-menu {
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links {
   list-style: none;
   display: flex;
   gap: 1.5rem;
 }
-.nav-menu a {
+.nav-links .nav-link {
   font-weight: 500;
-  padding-bottom: 3px; /* space for line */
+  padding-bottom: 3px;
+  color: #fff;
+  position: relative;
 }
-.nav-menu a.active::after,
-.nav-menu a:hover::after {
+.nav-links .nav-link.active::after,
+.nav-links .nav-link:hover::after {
   width: 100%;
 }
-.nav-menu a::after {
+.nav-links .nav-link::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -96,11 +107,11 @@ body.light-mode nav {
   transition: width 0.3s;
 }
 body.light-mode .nav-logo,
-body.light-mode .nav-menu a {
+body.light-mode .nav-links .nav-link {
   color: #ffb400;
 }
 
-/* Dark/Light Mode Toggle with icons */
+/* Mode Toggle */
 .mode-toggle {
   cursor: pointer;
   background: #ffb400;
@@ -121,6 +132,71 @@ body.light-mode .mode-toggle:hover {
   background: #e07b00;
 }
 
+/* Menu Toggle - hidden on desktop, visible on mobile */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1100;
+  }
+  .nav-menu {
+    display: none;
+  }
+}
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mode-toggle{
+  margin-right: 20px; /* Add spacing between the buttons */
+  font-size: 1.5rem; /* Adjust icon size if needed */
+  cursor: pointer;
+}
+
+/* Side Panel Menu for Mobile */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100%;
+  background-color: #000;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 4rem;
+  transition: right 0.3s ease-in-out;
+  z-index: 1200;
+}
+.side-menu.active {
+  right: 0;
+}
+.side-menu a {
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #222;
+}
+.side-menu a:hover {
+  background-color: #222;
+}
+
 /*-----------------------------------
   HERO SECTION
 -----------------------------------*/
@@ -138,9 +214,11 @@ body.light-mode .mode-toggle:hover {
 .hero::after {
   content: '';
   position: absolute;
-  top: 0; left: 0;
-  right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
   z-index: 0;
 }
 .hero-content {
@@ -158,7 +236,7 @@ body.light-mode .mode-toggle:hover {
   font-size: 1.2rem;
   margin-bottom: 2rem;
   min-height: 1.5em;
-  color: #ffcc00; /* Updated typewriter color */
+  color: #ffcc00;
 }
 .btn-hero {
   padding: 0.8rem 1.5rem;
@@ -188,11 +266,11 @@ body.light-mode .mode-toggle:hover {
 /*-----------------------------------
   HEADING OVERLAY STYLE
 -----------------------------------*/
+
 .section-heading {
   position: relative;
   text-align: center;
   margin-bottom: 2rem;
-  flex-basis: 100%;
   display: block;
 }
 .section-heading h2 {
@@ -208,7 +286,7 @@ body.light-mode .mode-toggle:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 5rem;
-  color: rgba(255, 255, 255, 0.1); /* Increased visibility */
+  color: rgba(255,255,255,0.1);
   pointer-events: none;
   user-select: none;
   z-index: 1;
@@ -224,7 +302,7 @@ body.light-mode .section-heading h2 {
   color: #333;
 }
 body.light-mode .section-heading .heading-overlay {
-  color: rgba(0, 0, 0, 0.1);
+  color: rgba(0,0,0,0.1);
 }
 
 /*-----------------------------------
@@ -256,6 +334,7 @@ body.light-mode .objective-section p {
 /*-----------------------------------
   ABOUT SECTION
 -----------------------------------*/
+
 .about-section {
   display: flex;
   flex-wrap: wrap;
@@ -263,6 +342,7 @@ body.light-mode .objective-section p {
   max-width: 1200px;
   margin: 4rem auto;
   gap: 2rem;
+  justify-content: center;
 }
 .about-left, .about-right {
   background-color: #111;
@@ -277,10 +357,20 @@ body.light-mode .about-right {
   border: 1px solid #ccc;
   color: #333;
 }
+/* Force about section columns to stack on mobile */
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+  }
+  .about-left, .about-right {
+    max-width: 100%;
+  }
+}
 .about-left {
   flex: 1;
   min-width: 300px;
   max-width: 400px;
+  margin-right: 0;
 }
 .profile-img {
   text-align: center;
@@ -310,12 +400,11 @@ body.light-mode .about-right {
   font-size: 1.2rem;
   color: #ffb400;
 }
-/* Hover animation for skills bars */
+/* Skills bars */
 .skill-bar:hover {
   transform: scale(1.05);
   transition: transform 0.3s;
 }
-/* Rounded ends for skill bars */
 .progress {
   background: #333;
   width: 100%;
@@ -362,7 +451,6 @@ body.light-mode .about-right ul li strong {
 
 /*-----------------------------------
   SECTION COMMON (Education, Experience, Projects, Contact)
-  Using .animate for fade-in
 -----------------------------------*/
 .animate {
   opacity: 0;
@@ -397,6 +485,19 @@ body.light-mode .card {
   color: #333;
 }
 
+/* Education & Experience Cards */
+#education .card,
+#experience .card {
+  width: 75%;
+  margin: 0 auto 1.5rem;
+}
+@media (max-width: 768px) {
+  #education .card,
+  #experience .card {
+    width: 90%;
+  }
+}
+
 /*-----------------------------------
   PROJECTS SECTION
 -----------------------------------*/
@@ -405,7 +506,6 @@ body.light-mode .card {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
-/* Horizontal slide animation for project cards */
 @keyframes slideIn {
   from {
     transform: translateX(-50px);
@@ -473,6 +573,9 @@ body.light-mode .contact-item {
   background: #fff;
   border: 1px solid #ccc;
   color: #333;
+}
+body.light-mode .contact-item p, body.light-mode .contact-item a {
+  color: #555;
 }
 
 /*-----------------------------------
@@ -545,246 +648,171 @@ body.light-mode .modal-content {
 -----------------------------------*/
 #backToTop {
   position: fixed;
-  bottom: 20px; /* Adjusted for better positioning */
+  bottom: 20px;
   right: 20px;
-  width: 50px; /* Ensure width and height are equal */
+  width: 50px;
   height: 50px;
   background: #ffb400;
   color: #000;
   border: none;
-  border-radius: 50%; /* Makes it circular */
+  border-radius: 50%;
   cursor: pointer;
-  font-size: 20px; /* Adjusted font size */
+  font-size: 20px;
   text-align: center;
-  line-height: 50px; /* Centers the text vertically */
+  line-height: 50px;
   z-index: 1000;
   transition: background 0.3s, transform 0.3s;
 }
-
 #backToTop:hover {
   background: #e09e00;
-  transform: scale(1.1); /* Slight zoom effect on hover */
+  transform: scale(1.1);
 }
-
 .back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ffb400;
-    color: #000;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    z-index: 1000;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffb400;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
 }
-
 .back-to-top:hover {
-    background-color: #e09e00;
-    transform: scale(1.1);
+  background-color: #e09e00;
+  transform: scale(1.1);
 }
-
 .back-to-top:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 /*-----------------------------------
-  MEDIA QUERIES
+  NAVBAR VISIBILITY ON SCROLL
 -----------------------------------*/
-@media (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .nav-menu ul {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-  .hero p {
-    font-size: 1rem;
-  }
-  .about-section {
-    flex-direction: column;
-  }
-  .about-left, .about-right {
-    max-width: 100%;
-  }
+nav.hidden {
+  transform: translateY(-100%);
+}
+nav.visible {
+  transform: translateY(0);
 }
 
-.highlight {
-  color: white; /* Makes the text white */
-}
-
-/* Certifications Section */
+/*-----------------------------------
+  CERTIFICATIONS SECTION (Auto-Scroll, Single Row)
+-----------------------------------*/
 .certifications-section {
   width: 90%;
   max-width: 1200px;
   margin: 4rem auto;
 }
-
 .certifications-section h2 {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 2rem;
 }
-
 .certifications-container {
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden; /* Hide overflow to remove the scroll bar */
-    width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
-
 .certifications-grid {
-    display: flex;
-    gap: 20px;
-    overflow: hidden; /* Prevent scroll bar from appearing */
-    scroll-behavior: smooth; /* Smooth scrolling for arrow navigation */
-    padding: 10px 0;
-    width: 100%;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  width: 100%;
+  white-space: nowrap;
 }
-
 .certification-card {
-    flex: 0 0 25%; /* Show 4 cards at a time (100% / 4 = 25%) */
-    max-width: 25%;
-    height: 300px;
-    box-sizing: border-box;
-    margin: 0 10px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-}
-
-.certification-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-}
-
-.certification-card h3 {
-    font-size: 1rem;
-    margin: 10px 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.certification-card p {
-    font-size: 0.9rem;
-    margin: 5px 0;
-}
-
-.arrow-btn {
-    background-color: #ffb400; /* Match the theme color */
-    color: #000; /* Black text for better contrast */
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    z-index: 10;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.arrow-btn:hover {
-    background-color: #e09e00; /* Slightly darker shade for hover effect */
-    transform: scale(1.1); /* Slight zoom effect on hover */
-}
-
-#leftArrow {
-    left: 10px;
-}
-
-#rightArrow {
-    right: 10px;
-}
-
-.certification-item {
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 6px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 6px rgba(255, 180, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 0 0 25%; /* 4 cards per view */
+  max-width: 25%;
+  height: 300px;
+  box-sizing: border-box;
+  margin: 0 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   text-align: center;
+  text-decoration: none;
+  color: inherit;
 }
-
-.certification-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 16px rgba(255, 180, 0, 0.2);
-}
-
-.certification-item img {
+.certification-card img {
   width: 100%;
   height: 150px;
   object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 1rem;
 }
-
-.certification-item h3 {
-  font-size: 1.5rem;
-  color: #ffb400;
-  margin-bottom: 0.5rem;
+.certification-card h3 {
+  font-size: 1rem;
+  margin: 10px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
-.certification-item p {
-  color: #ccc;
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
+.certification-card p {
+  font-size: 0.9rem;
+  margin: 5px 0;
 }
-
-.certification-item a {
-  display: inline-block;
-  padding: 0.8rem 1.5rem;
+.arrow-btn {
   background-color: #ffb400;
   color: #000;
-  font-weight: 600;
   border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: background 0.3s;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 10;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
-.certification-item a:hover {
+.arrow-btn:hover {
   background-color: #e09e00;
+  transform: scale(1.1);
+}
+#leftArrow {
+  left: 10px;
+}
+#rightArrow {
+  right: 10px;
 }
 
-body.light-mode .certification-item {
-  background: #fff;
-  border: 1px solid #ccc;
-  color: #333;
+/*-----------------------------------
+  MEDIA QUERIES (Mobile Adjustments)
+-----------------------------------*/
+@media (max-width: 768px) {
+  /* Education & Experience cards: full width */
+  #education .card,
+  #experience .card {
+    width: 90%;
+  }
+  
+  /* About section: force stacking */
+  .about-section {
+    flex-direction: column;
+  }
+  
+  /* Certifications: maintain auto-scroll single row; adjust card width if needed */
+  .certification-card {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
 }
 
-body.light-mode .certification-item p {
-  color: #555;
-}
-
-body.light-mode .certification-item a {
-  background-color: #ff8c00;
-  color: #fff;
-}
-
-body.light-mode .certification-item a:hover {
-  background-color: #e07b00;
-}
+/*-----------------------------------
+  SIDE PANEL MENU (Overrides)
+-----------------------------------*/
+/* The default .nav-menu for mobile is hidden and replaced by side-menu; additional overrides if needed */
