@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shivam Chauhan - Portfolio</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-ak+qOLBfZbJySncWrn8Q2UK0MNYQ83mZwYIYpQI4Un0aLC6YSe1ZLO0nEtUKmKFCsr5RzRfo+um2bEIgSc3eqQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">Shivam Chauhan</div>
+      <div class="nav-menu">
+        <ul>
+          <!-- Reordered: Objective first, then About -->
+          <li><a href="#objective" class="nav-link">Objective</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#education" class="nav-link">Education</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#certifications" class="nav-link">Certifications</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+      <!-- Dark/Light Mode Toggle Icons -->
+      <button class="mode-toggle" id="modeToggle">☀</button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>Hi, I AM</h1><h1><span class="highlight">SHIVAM CHAUHAN</span></h1>
+      <!-- Typewriter effect text -->
+      <div id="typewriter"></div>
+      <button class="btn-hero" onclick="location.href='mailto:cshivam828@gmail.com'">Hire Me</button>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top">↑</button>
+
+  <!-- DIVIDER -->
+  <hr class="section-divider">
+
+  <!-- OBJECTIVE SECTION with Overlay Heading -->
+  <section id="objective" class="objective-section animate">
+    <div class="section-heading">
+      <span class="heading-overlay">Objective</span>
+      <h2>OBJECTIVE</h2>
+      <p>Dedicated to Innovation and Continuous Learning</p>
+    </div>
+    <p>
+      My objective is to leverage my technical skills and passion for innovation to create impactful 
+      software solutions. I aim to continuously learn and grow in a challenging environment, 
+      contributing to projects that push the boundaries of technology and enrich user experiences.
+    </p>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- ABOUT SECTION with Overlay Heading -->
+  <section id="about" class="about-section animate">
+    <div class="section-heading">
+      <span class="heading-overlay">About me</span>
+      <h2>ABOUT ME</h2>
+      <p>Get to know who I am and what drives me</p>
+    </div>
+    <div class="about-left">
+      <div class="profile-img">
+        <img src="pfp.png" alt="Profile Image" loading="lazy">
+      </div>
+      <h2>Shivam Chauhan</h2>
+      <p>Student at NIET, Greater Noida</p>
+      <p>Address: Noida, Uttar Pradesh, India</p>
+
+      <h3>Skills</h3>
+      <div class="skill-bar">
+        <p>Java 95%</p>
+        <div class="progress">
+          <span style="--skill-level:95%"></span>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <p>HTML &amp; CSS 85%</p>
+        <div class="progress">
+          <span style="--skill-level:85%"></span>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <p>JavaScript 70%</p>
+        <div class="progress">
+          <span style="--skill-level:70%"></span>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <p>C++ 70%</p>
+        <div class="progress">
+          <span style="--skill-level:70%"></span>
+        </div>
+      </div>
+      <div class="skill-bar">
+        <p>SQL 80%</p>
+        <div class="progress">
+          <span style="--skill-level:80%"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-right">
+      <h2>About Me</h2>
+      <p>
+        As a dedicated Computer Science student, I'm driven by my passion for learning and building 
+        innovative solutions. Proficient in Java, HTML, CSS, and more, I blend theory with hands-on 
+        projects. My journey is fueled by solving complex problems and continuous skill enhancement.
+      </p>
+      <ul>
+        <li><strong>Profile:</strong> Aspiring Software Developer</li>
+        <li><strong>Domain:</strong> Web Development, Front-End &amp; Backend Development</li>
+        <li><strong>Education:</strong> B.Tech (Internet of Things)</li>
+        <li><strong>Languages:</strong> English, Hindi</li>
+        <li><strong>Stacks:</strong> Java, C++, HTML, CSS, JavaScript, ReactJS, NodeJS, SQL</li>
+        <li><strong>Interests:</strong> Music, Travel, Sports</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- EDUCATION SECTION with Overlay Heading -->
+  <section id="education" class="animate">
+    <div class="section-heading">
+      <span class="heading-overlay">Education</span>
+      <h2>EDUCATION</h2>
+      <p>Learn about my academic journey</p>
+    </div>
+    <div class="card">
+      <h3>Noida Institute of Engineering and Technology</h3>
+      <p>
+        Bachelor of Technology, Specialization in Internet of Things<br>
+        Greater Noida, U.P., India<br>
+        Sept. 2022 -- Present
+      </p>
+    </div>
+    <div class="card">
+      <h3>Frank Anthony Public School</h3>
+      <p>
+        Senior Secondary Education<br>
+        Lajpat Nagar, New Delhi, India<br>
+        April 2009 -- May 2020
+      </p>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- EXPERIENCE SECTION with Overlay Heading -->
+  <section id="experience" class="animate">
+    <div class="section-heading">
+      <span class="heading-overlay">Experience</span>
+      <h2>EXPERIENCE</h2>
+      <p>Explore my professional experiences and internships</p>
+    </div>
+    <div class="card">
+      <h3>Virtual Intern, Web Development</h3>
+      <p>Bharat Intern (Virtual)<br>Aug 10, 2023 -- Sept 10, 2023</p>
+      <ul>
+        <li>Built a Temperature Converter</li>
+        <li>Developed a Netflix Landing Page Clone</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Virtual Intern, Java Programming</h3>
+      <p>Codsoft (Virtual)<br>Aug 1, 2024 -- Aug 31, 2024</p>
+      <ul>
+        <li>Developed a Number Guessing Game with multiple difficulty levels</li>
+        <li>Built a Student Grade Calculator</li>
+        <li>Created a Currency Converter using live APIs</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- PROJECTS SECTION with Overlay Heading -->
+  <section id="projects" class="animate">
+    <div class="section-heading">
+      <span class="heading-overlay">Projects</span>
+      <h2>PROJECTS</h2>
+      <p>Browse through my top projects</p>
+    </div>
+    <div class="projects-grid">
+      <!-- Only 4 projects as requested -->
+      <div class="card project-card" data-category="game">
+        <img src="project_images/ballGame.jpeg" alt="Project Image" class="project-img">
+        <h3>3D Platform Game (Inspired by Redball)</h3>
+        <p><strong>Technologies:</strong> Unity, C#</p>
+        <p>Designed and developed a 3D platformer with innovative level design.</p>
+      </div>
+      <div class="card project-card" data-category="game">
+        <img src="project_images/fps.webp" alt="Project Image" class="project-img">
+        <h3>3D FPS Game</h3>
+        <p><strong>Technologies:</strong> Unity, C#</p>
+        <p>Created a first-person shooter featuring movement and combat across two levels.</p>
+      </div>
+      <div class="card project-card" data-category="game">
+        <img src="project_images/gestureBlitz.jpg" alt="Project Image" class="project-img">
+        <h3>3D Car Game with Gesture Control</h3>
+        <p><strong>Technologies:</strong> Unity, C#, Python (OpenCV, Mediapipe)</p>
+        <p>Developed a gesture-controlled car game using real-time hand gesture detection.</p>
+      </div>
+      <div class="card project-card" data-category="dashboard">
+        <img src="project_images/DailyAffirmations.jpg" alt="Project Image" class="project-img">
+        <h3>Affirmation Suggesting Dashboard</h3>
+        <p><strong>Technologies:</strong> Django, HTML, CSS, SQLite</p>
+        <p>Built a web application featuring user registration, daily affirmations, ratings, and filters.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+<!-- CERTIFICATIONS SECTION with Overlay Heading -->
+<section id="certifications" class="certifications-section animate">
+    <div class="section-heading">
+        <span class="heading-overlay">Certifications</span>
+        <h2>CERTIFICATIONS</h2>
+        <p>Explore my professional certifications</p>
+    </div>
+    <div class="certifications-container">
+        <button id="leftArrow" class="arrow-btn">←</button>
+        <div class="certifications-grid" id="certificationsGrid">
+            <!-- Certification cards will be dynamically inserted here -->
+        </div>
+        <button id="rightArrow" class="arrow-btn">→</button>
+    </div>
+</section>
+  
+  <hr class="section-divider">
+
+  <!-- CONTACT SECTION with Overlay Heading and Icons -->
+  <section id="contact" class="contact-section animate">
+    <div class="section-heading">
+      <span class="heading-overlay">Contact</span>
+      <h2>CONTACT ME</h2>
+      <p>Below are the details to reach out to me!</p>
+    </div>
+
+    <div class="contact-info-grid">
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <h4>ADDRESS</h4>
+        <p>New Delhi, Delhi, India</p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-phone-alt"></i>
+        <h4>CONTACT NUMBER</h4>
+        <p>+91 8588804585</p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <h4>EMAIL ADDRESS</h4>
+        <p><a href="mailto:cshivam828@gmail.com">cshivam828@gmail.com</a></p>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-file-download"></i>
+        <h4>DOWNLOAD RESUME</h4>
+        <p><a href="resume.pdf" download>Resume Link</a></p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Shivam Chauhan. All Rights Reserved.</p>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Link to external JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
